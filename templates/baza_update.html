@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<h1>Форма заполения</h1>
+<form method="POST" class="form-contact">
+    
+    <p>{{ form.name.label }}{{ form.name(size=20, padding=100) }}</p>
+    <p>{{ form.year.label }}{{ form.year(size=20) }}</p>
+    <p>{{ form.rating.label }}{{ form.rating(size=20) }}</p>
+    <p>{{ form.genre.label }}{{ form.genre(size=20) }}</p>
+<input type="submit" value="Отправить">
+</form>
+
+{% endblock %}

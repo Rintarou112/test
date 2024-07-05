@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+
+<div class="con">
+<div class="can">
+  <h2>Таблица с фильмами</h2>
+<table border=1 class="tabl">
+     <tr>
+
+      
+      <th>Name</th>
+      <th>Year</th>
+      <th>Rating</th>
+      <th>Genre</th>
+    </tr>
+{% for i in data %}
+
+     <tr><td>{{i.name_film}}</td>
+        <td>{{i.year}}</td>
+        <td>{{i.rating}}</td>
+        <td>{{i.genre}}</td>
+        <td id="but"><a href="/bazad/{{i.id}}">Удалить</td>
+        <td id="but"><a href="/bazad/{{i.id}}/update">Редактировать</a></td>
+        </tr>
+        
+{% endfor -%}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+
+<tr>
+  <form method="POST" class="form-contact-b">
+  {{ form1.csrf_token }}
+  <td>{{ form1.name_film }}</td>
+  <td>{{ form1.year }}</td>
+  <td>{{ form1.rating }}</td>
+  <td>{{ form1.genre }}</td>
+  <td id="but"><input type="submit" value="Добавить фильм"></td>
+</form>
+  </tr>
+</table>
+
+</div>
+<div class="can">
+  <h2>Таблица с пользователями</h2>
+  <table border="1" class="tabl">
+    <tr>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Возраст</th>
+    </tr>
+    {% for i in users %}
+    
+    <tr><td>{{i.name_user}}</td>
+        <td>{{i.familia}}</td>
+        <td>{{i.age}}</td>
+        <td id="but"><a href="/bazad/{{i.id}}">Удалить</a></td>
+      </tr>
+      
+        
+    {% endfor %}
+    <tr>
+      <form method="POST" class="form-contact-b">
+      {{ form2.csrf_token }}
+      <td>{{ form2.name_user }}</td>
+      <td>{{ form2.familia }}</td>
+      <td>{{ form2.age }}</td>
+      <td><input type="submit" onclick="" value="Добавить пользователя"></td>
+    </form>
+      </tr>
+  </table>
+
+</div>
+</div>
+
+{% endblock %}
+  
+     
+

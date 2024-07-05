@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+<h1>Форма заполения</h1>
+<form method="POST" class="form-contact">
+    <p>{{ form.name_user.label }}{{ form.name_user(size=20, padding=100) }}</p>
+    <p>{{ form.familia.label }}{{ form.familia(size=20) }}</p>
+    <p>{{ form.age.label }}{{ form.age(size=20) }}</p>
+    
+<input type="submit" value="Отправить">
+</form>
+
+{% endblock %}
